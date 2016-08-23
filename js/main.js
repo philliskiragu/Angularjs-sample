@@ -3,10 +3,8 @@
 * @Date:   2016-08-22T08:27:13+03:00
 * @Email:  pkiragu@cytonn.com
 * @Last modified by:   PKiragu
-* @Last modified time: 2016-08-23T00:08:41+03:00
+* @Last modified time: 2016-08-23T12:38:06+03:00
 */
-
-
 
 // modules
 // declaring a module
@@ -69,4 +67,17 @@ myModule.controller('myCtrl', function($scope) {
         'Mary',
         'Kai'
         ];
+});
+myModule.controller('myWatch', function($scope) {
+
+    $scope.myVar = 1;
+
+    $scope.$watch('myVar', function() {
+
+        alert('hey, The value has changed!');
+    });
+
+    $scope.buttonClicked = function() {
+        $scope.myVar = 2; // This will trigger $watch expression to kick in
+    };
 });
