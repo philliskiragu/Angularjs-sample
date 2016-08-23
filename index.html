@@ -3,7 +3,7 @@
 @Date:   2016-08-22T08:27:01+03:00
 @Email:  pkiragu@cytonn.com
 @Last modified by:   PKiragu
-@Last modified time: 2016-08-23T00:25:59+03:00
+@Last modified time: 2016-08-23T12:34:41+03:00
 -->
 
 
@@ -13,17 +13,16 @@
 
 <head>
   <meta charset="utf-8">
+  <!-- <script type="text/javascript" src="js/angular.min.js"></script> -->
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.8/angular.min.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular-messages/1.5.8/angular-messages.min.js"></script>
   <script type="text/javascript" src="js/main.js"></script>
-
-
   <title>AngularJS Code Sample</title>
 </head>
 
 <body ng-app="myApp">
 
   <hr>
-
   <p>Nothing here {{'yet' + '!'}}</p>
   <hr>
   <div>
@@ -31,23 +30,23 @@
     <br>
     <hr>
     <!-- filters -->
-    {{ 23*.353563637 | number:4 }}
-    <br> {{ 45*0.653432 | number | currency }}
-    <br> {{ "MY NAME IS PHILLIS" | lowercase }}
+    {{ 23*.353563637 | number:4 }}<br>
+    {{ 45*0.653432 | number | currency }}<br>
+    {{ "MY NAME IS PHILLIS" | lowercase }}
   </div>
   <hr>
   <p>
     searching an array
   </p>
-  <!-- <div ng-controller="myCtrl">
+  <div ng-controller="myCtrl">
     <input type="text" ng-model="letter" placeholder="Enter a letter to filter">
     <ul>
       <li ng-repeat="name in names | filter:letter">
         {{ name|greet|getNames }}
       </li>
     </ul>
-  </div> -->
-
+  </div>
+<hr>
   <p>
     scope. assigning power to scopes
   </p>
@@ -57,14 +56,16 @@
       My controller scope power should be vibing: {{power}}
     </p>
   </div>
-
-
   <div>
     <p>
       My root scope power should be mind reading: {{power}}
     </p>
   </div>
-
+  <hr>
+  <div>
+    <p>{{myVar}}</p>
+  </div>
+<hr>
   <div>
     <p>
       form
@@ -80,6 +81,9 @@
         <div ng-message="minlength">Your username is too short</div>
         <div ng-message="maxlength">Your username is too long</div>
       </div>
+
+
+</div>
       <input name="send" type="button" value="send">
     </form>
 
