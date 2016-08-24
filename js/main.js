@@ -3,12 +3,13 @@
 * @Date:   2016-08-22T08:27:13+03:00
 * @Email:  pkiragu@cytonn.com
 * @Last modified by:   PKiragu
-* @Last modified time: 2016-08-23T12:38:06+03:00
+* @Last modified time: 2016-08-24T20:19:41+03:00
 */
 
 // modules
 // declaring a module
-var myModule = angular.module('myApp', ['ngMessages']);
+// 'ngMessages',
+var myModule = angular.module('myApp', ['ngMessages', 'ui.router']);
 
 // configuring a module
 myModule.filter('greet', function() {
@@ -38,21 +39,11 @@ myModule.filter('getNames', function() {
   };
 });
 
-myModule.controller('FilterController', ['nameFilter', function FilterController(nameFilter) {
-  this.array = [
-    {name: 'Phillis'},
-    {name: 'William'},
-    {name: 'Daniel'},
-    {name: 'Kiragu'},
-
-  ];
-  this.filteredArray = nameFilter(this.array, 'p');
-}]);
 
 myModule.run(function($rootScope) {
     $rootScope.power = 'Mind reading';
 });
-
+// controller
 myModule.controller('myCtrl', function($scope) {
     $scope.power='Vibing';
     $scope.names = [
@@ -80,4 +71,47 @@ myModule.controller('myWatch', function($scope) {
     $scope.buttonClicked = function() {
         $scope.myVar = 2; // This will trigger $watch expression to kick in
     };
+});
+
+myModule.config(function($stateProvider, $urlRouterProvider) {
+
+  $urlRouterProvider.otherwise("/day1");
+  $stateProvider
+    .state ('example',{
+      url: 'theview',
+      template: '<h3>I am a routed view</h3>'
+    })
+    .state('day1', {
+      url: '/day1',
+      templateUrl:  'index.html'
+    })
+
+    .state('day2',{
+      url: '/day2',
+      views: {
+
+            // the main template will be placed here (relatively named)
+            '': { templateUrl: 'day3.html' }
+          }
+    })
+
+    .state('day3',{
+      url: '/day3',
+      views: {
+
+            // the main template will be placed here (relatively named)
+            '': { templateUrl: 'day3.html' },
+
+            // the child views will be defined here (absolutely named)
+            'columnOne@day3': {
+                templateUrl: 'directives.html'
+            },
+
+            // for column two, we'll define a separate controller
+            'columnTwo@day3': {
+                templateUrl: 'service.html'
+            }
+        }
+
+    });
 });
