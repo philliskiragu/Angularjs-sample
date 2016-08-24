@@ -3,7 +3,7 @@
 @Date:   2016-08-22T08:27:01+03:00
 @Email:  pkiragu@cytonn.com
 @Last modified by:   PKiragu
-@Last modified time: 2016-08-23T12:34:41+03:00
+@Last modified time: 2016-08-24T18:39:00+03:00
 -->
 
 
@@ -13,104 +13,97 @@
 
 <head>
   <meta charset="utf-8">
-  <!-- <script type="text/javascript" src="js/angular.min.js"></script> -->
+  <link rel="stylesheet" type="text/css" href="css/foundation.css">
+  <link rel="stylesheet" type="text/css" href="css/main.css">
+
+  <!-- <script src="js/angular.min.js"></script> -->
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.8/angular.min.js"></script>
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular-messages/1.5.8/angular-messages.min.js"></script>
+<script src="js/angular-ui-router.min.js"></script>
   <script type="text/javascript" src="js/main.js"></script>
+
   <title>AngularJS Code Sample</title>
 </head>
+<!-- bootstrapping with ngApp -->
 
 <body ng-app="myApp">
 
-  <hr>
-  <p>Nothing here {{'yet' + '!'}}</p>
-  <hr>
-  <div>
-    {{ 'Phillis' | greet}}
-    <br>
-    <hr>
-    <!-- filters -->
-    {{ 23*.353563637 | number:4 }}<br>
-    {{ 45*0.653432 | number | currency }}<br>
-    {{ "MY NAME IS PHILLIS" | lowercase }}
-  </div>
-  <hr>
-  <p>
-    searching an array
-  </p>
-  <div ng-controller="myCtrl">
-    <input type="text" ng-model="letter" placeholder="Enter a letter to filter">
-    <ul>
-      <li ng-repeat="name in names | filter:letter">
-        {{ name|greet|getNames }}
-      </li>
-    </ul>
-  </div>
-<hr>
-  <p>
-    scope. assigning power to scopes
-  </p>
+  <div class="top-bar">
+    <div class="top-bar-left">
+      <ul class="menu" data-dropdown-menu>
+        <li class="menu-text" ui-sref="#">My AngularJS</li>
+      </ul>
+    </div>
+    <div class="top-bar-right">
+      <!-- basic menu -->
+      <ul class="menu">
+        <ul class="menu">
 
-  <div ng-controller="myCtrl">
-    <p>
-      My controller scope power should be vibing: {{power}}
-    </p>
+          <li> <a ui-sref="day2">Day 2</a> </li>
+          <li><a ui-sref="day3">Day 3</a>
+            <li>
+              <input type="search" placeholder="Search">
+            </li>
+            <li>
+              <button type="button" class="button">Search</button>
+            </li>
+        </ul>
+    </div>
   </div>
-  <div>
-    <p>
-      My root scope power should be mind reading: {{power}}
-    </p>
-  </div>
-  <hr>
-  <div>
-    <p>{{myVar}}</p>
-  </div>
-<hr>
-  <div>
-    <p>
-      form
-    </p>
-    <form name="myForm">
-      <label>
-        Enter your name:
-        <input type="text" name="userName" ng-model="username" ng-minlength="5" ng-maxlength="20" required />
-      </label>
 
-      <div ng-messages="myForm.userName.$error" ng-if="myForm.userName.$error" style="color:maroon" role="alert">
-        <div ng-message="required">You did not enter a username</div>
-        <div ng-message="minlength">Your username is too short</div>
-        <div ng-message="maxlength">Your username is too long</div>
+  <div class="row">
+    <div class="large-12">
+      <hr>
+      <p>Angular Basics {{'Day' + ' 1'}}</p>
+      <hr>
+      <!-- module -->
+      <div>
+        {{ 'There' | greet}}
+        <br>
+        <hr>
+        <!-- filters -->
+        <h4>Inbuilt Filters</h4> {{ 23*.353563637 | number:4 }}
+        <br> {{ 45*0.653432 | number | currency }}
+        <br> {{ "MY NAME IS PHILLIS" | lowercase }}
       </div>
+      <hr>
+      <!-- custom filter -->
+      <!-- uses the controller myCtrl to display the data -->
+      <h4>A custom filter that searches for names in a list of names</h4>
+      <p>
+        Type a letter to search
+      </p>
+      <div ng-controller="myCtrl">
+        <input type="text" ng-model="letter" placeholder="Enter a letter to filter">
+        <ul>
+          <li ng-repeat="name in names | filter:letter">
+            {{ name| greet| getNames }}
+          </li>
+        </ul>
+      </div>
+      <hr>
+      <!-- scope -->
+      <h4>$scope and $routescope </h4>
+      <p>
+        assigning power to scopes
+      </p>
 
-
-</div>
-      <input name="send" type="button" value="send">
-    </form>
-
-    <p>The input's valid state is:</p>
-    <h1>{{myForm.username.$valid}}</h1>
-  </div>
-
-
-  <!-- <div ng-controller="FilterController as ctrl"> -->
-  <!-- <div>
-      All entries:
-      <span ng-repeat="entry in ctrl.array">{{entry.name}} </span>
+      <div ng-controller="myCtrl">
+        <p>
+          My controller scope power should be vibing: {{power}}
+        </p>
+      </div>
+      <div>
+        <p>
+          My root scope power should be mind reading: {{power}}
+        </p>
+      </div>
+      <hr>
+      <!-- the view will be placed here -->
+      <h4>the view</h4>
+      <div ui-view></div>
     </div>
-    <div>
-      Entries that contain an "a":
-      <span ng-repeat="entry in ctrl.filteredArray">{{entry.name}} </span>
-    </div>
   </div>
-<hr> -->
-
-  <!-- using ngModel  -->
-  <div ng-controller="myCtrl">
-    Name:
-    <input ng-model="name">
-  </div>
-  <!-- <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.8/angular.js"></script> -->
-  <!-- <script type="text/javascript" src="js/angular.min.js"></script> -->
 </body>
 
 </html>
