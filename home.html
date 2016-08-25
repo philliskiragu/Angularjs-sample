@@ -1,0 +1,60 @@
+<!--
+@Author: Phillis Kiragu <PKiragu>
+@Date:   2016-08-25T11:21:15+03:00
+@Email:  pkiragu@cytonn.com
+@Last modified by:   PKiragu
+@Last modified time: 2016-08-25T11:21:28+03:00
+-->
+
+
+
+<div class="row">
+  <div class="large-12">
+    <hr>
+    <p>Angular Basics {{'Day' + ' 1'}}</p>
+    <hr>
+    <!-- module -->
+    <div>
+      {{ 'There' | greet}}
+      <br>
+      <hr>
+      <!-- filters -->
+      <h4>Inbuilt Filters</h4> {{ 23*.353563637 | number:4 }}
+      <br> {{ 45*0.653432 | number | currency }}
+      <br> {{ "MY NAME IS PHILLIS" | lowercase }}
+    </div>
+    <hr>
+    <!-- custom filter -->
+    <!-- uses the controller myCtrl to display the data -->
+    <h4>A custom filter that searches for names in a list of names</h4>
+    <p>
+      Type a letter to search
+    </p>
+    <div ng-controller="myCtrl">
+      <input type="text" ng-model="letter" placeholder="Enter a letter to filter">
+      <ul>
+        <li ng-repeat="name in names | filter:letter">
+          {{ name| greet| getNames }}
+        </li>
+      </ul>
+    </div>
+    <hr>
+    <!-- scope -->
+    <h4>$scope and $routescope </h4>
+    <p>
+      assigning power to scopes
+    </p>
+
+    <div ng-controller="myCtrl">
+      <p>
+        My controller scope power should be vibing: {{power}}
+      </p>
+    </div>
+    <div>
+      <p>
+        My root scope power should be mind reading: {{power}}
+      </p>
+    </div>
+    <hr>
+  </div>
+</div>
