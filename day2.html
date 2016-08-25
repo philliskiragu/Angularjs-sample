@@ -1,0 +1,46 @@
+<!--
+@Author: Phillis Kiragu <PKiragu>
+@Date:   2016-08-24T17:01:18+03:00
+@Email:  pkiragu@cytonn.com
+@Last modified by:   PKiragu
+@Last modified time: 2016-08-24T20:13:07+03:00
+-->
+
+
+<div class="row">
+  <div class="large-12">
+  <hr>
+  <p>Angular Scope and Form Handling {{'Day' + ' 2'}}</p>
+  <hr>
+<h4> Form Handling </h4>
+  <div>
+    <form name="myForm">
+      <label>
+        Enter your name:
+        <input type="text" name="userName" ng-model="username"  ng-maxlength="20" required />
+      </label>
+
+      <div ng-messages="myForm.userName.$error" ng-if="myForm.userName.$error" style="color:maroon" role="alert">
+        <div ng-message="required">You did not enter a username</div>
+        <div ng-message="maxlength">Your username is too long</div>
+      </div>
+      <label>
+        Enter your Password:
+        <input type="text" name="password" ng-model="password" ng-minlength="8"  required />
+      </label>
+
+      <div ng-messages="myForm.password.$error" ng-if="myForm.password.$error" style="color:red" role="alert">
+        <div ng-message="required">You did not enter a password</div>
+        <div ng-message="minlength">Your password is too short</div>
+      </div>
+
+</div>
+      <input name="send" type="button" value="Login">
+    </form>
+
+    <p>The input's valid state is:</p>
+    <h1>{{myForm.username.$valid}}</h1>
+  </div>
+
+</div>
+</div>
