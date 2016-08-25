@@ -3,12 +3,11 @@
  * @Date:   2016-08-22T08:27:13+03:00
  * @Email:  pkiragu@cytonn.com
 * @Last modified by:   PKiragu
-* @Last modified time: 2016-08-25T10:48:50+03:00
+* @Last modified time: 2016-08-25T12:49:05+03:00
  */
 
 // modules
 // declaring a module
-// 'ngMessages',
 var myModule = angular.module('myApp', ['ngMessages', 'ui.router']);
 
 // configuring a module
@@ -74,15 +73,22 @@ myModule.controller('myCtrl', function($scope) {
 //     };
 // });
 
+
 myModule.config(function($stateProvider, $urlRouterProvider) {
 
   $urlRouterProvider.otherwise("/day1");
 
   $stateProvider
 
+    .state('home', {
+        url: '',
+        abstract: true,
+        templateUrl: 'home.html'
+      })
+
     .state('day1', {
       url: '/day1',
-      templateUrl: 'index.html'
+      templateUrl: 'home.html'
     })
     .state('example', {
       url: '/theview',
@@ -92,38 +98,37 @@ myModule.config(function($stateProvider, $urlRouterProvider) {
 
   .state('day2', {
     url: '/day2',
-    templateUrl: 'day2.html'
+    templateUrl: '/day2.html'
   })
-
-  // .state('day3', {
-  //   url: '/day3',
-  //   views: {
-  //
-  //     // the main template will be placed here (relatively named)
-  //     '': {
-  //       templateUrl: 'day3.html'
-  //     },
-  //
-  //     // the child views will be defined here (absolutely named)
-  //     'directives@day3': {
-  //       templateUrl: 'directives.html'
-  //     },
-  //
-  //     // for column two, we'll define a separate controller
-  //     'services@day3': {
-  //       templateUrl: 'service.html'
-  //     }
-  //   }
-  //
-  // })
 
   .state('day3', {
     url: '/day3',
-    template: '<h2>day3</h2>'
+    views: {
+
+      // the main template will be placed here (relatively named)
+      '': {
+        templateUrl: '/day3.html'
+      },
+
+      // the child views will be defined here (absolutely named)
+      'directives@day3': {
+        templateUrl: '/directives.html'
+      },
+
+      // for column two, we'll define a separate controller
+      'services@day3': {
+        templateUrl: '/service.html'
+      }
+    }
+
+  })
+
+  .state('day4', {
+    url: '/day4',
+    template: '</h1>day4.html</h1>'
 
   });
 });
-
 //Promises
 //
 myModule.controller('appCtrl', function($scope, $q){
