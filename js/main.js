@@ -3,7 +3,7 @@
 * @Date:   2016-08-22T08:27:13+03:00
 * @Email:  pkiragu@cytonn.com
 * @Last modified by:   PKiragu
-* @Last modified time: 2016-08-24T20:19:41+03:00
+* @Last modified time: 2016-08-25T06:41:12+03:00
 */
 
 // modules
@@ -59,26 +59,27 @@ myModule.controller('myCtrl', function($scope) {
         'Kai'
         ];
 });
-myModule.controller('myWatch', function($scope) {
 
-    $scope.myVar = 1;
-
-    $scope.$watch('myVar', function() {
-
-        alert('hey, The value has changed!');
-    });
-
-    $scope.buttonClicked = function() {
-        $scope.myVar = 2; // This will trigger $watch expression to kick in
-    };
-});
+// myModule.controller('myWatch', function($scope) {
+//
+//     $scope.myVar = 1;
+//
+//     "vm.myVar",
+//     function handleVarChange( newValue, oldValue ) {
+//         console.log( "vm.myVar:", newValue );
+//     })
+//
+//     $scope.buttonClicked = function() {
+//         $scope.myVar = 2; // This will trigger $watch expression to kick in
+//     };
+// });
 
 myModule.config(function($stateProvider, $urlRouterProvider) {
 
   $urlRouterProvider.otherwise("/day1");
   $stateProvider
-    .state ('example',{
-      url: 'theview',
+    .state ('day1.example',{
+      url: '/theview',
       template: '<h3>I am a routed view</h3>'
     })
     .state('day1', {
@@ -91,7 +92,7 @@ myModule.config(function($stateProvider, $urlRouterProvider) {
       views: {
 
             // the main template will be placed here (relatively named)
-            '': { templateUrl: 'day3.html' }
+            '': { templateUrl: 'day2.html' }
           }
     })
 
@@ -103,15 +104,23 @@ myModule.config(function($stateProvider, $urlRouterProvider) {
             '': { templateUrl: 'day3.html' },
 
             // the child views will be defined here (absolutely named)
-            'columnOne@day3': {
+            'directives@day3': {
                 templateUrl: 'directives.html'
             },
 
             // for column two, we'll define a separate controller
-            'columnTwo@day3': {
+            'services@day3': {
                 templateUrl: 'service.html'
             }
         }
+
+    })
+
+    .state('day4',{
+      url:'/day4',
+      views:{
+        '': { templateUrl: 'day3.html' }
+      }
 
     });
 });
