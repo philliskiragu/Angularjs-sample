@@ -3,60 +3,62 @@
 @Date:   2016-08-22T08:27:01+03:00
 @Email:  pkiragu@cytonn.com
 @Last modified by:   PKiragu
-@Last modified time: 2016-08-25T11:25:45+03:00
+@Last modified time: 2016-08-25T13:20:59+03:00
 -->
-
 
 
 <!doctype html>
 <html>
 
 <head>
-  <meta charset="utf-8">
-  <link rel="stylesheet" type="text/css" href="css/foundation.css">
-  <link rel="stylesheet" type="text/css" href="css/main.css">
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="css/foundation.css">
+    <link rel="stylesheet" type="text/css" href="css/main.css">
 
-  <!-- <script src="js/angular.min.js"></script> -->
-  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.8/angular.min.js"></script>
-  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular-messages/1.5.8/angular-messages.min.js"></script>
-<script src="js/angular-ui-router.min.js"></script>
-  <script type="text/javascript" src="js/main.js"></script>
+    <!-- <script src="js/angular.min.js"></script> -->
+    <script type="text/javascript"
+            src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.8/angular.min.js"></script>
+    <script type="text/javascript"
+            src="https://cdnjs.cloudflare.com/ajax/libs/angular-messages/1.5.8/angular-messages.min.js"></script>
+    <script src="js/angular-ui-router.min.js"></script>
+    <script type="text/javascript" src="js/main.js"></script>
+    <!-- <script type="text/javascript" src="js/directive_sample.js"></script> -->
 
-  <title>AngularJS Code Sample</title>
+    <title>AngularJS Code Sample</title>
 </head>
 <!-- bootstrapping with ngApp -->
 
 <body ng-app="myApp">
 
-  <div class="top-bar">
+<div class="top-bar">
     <div class="top-bar-left">
-      <ul class="menu" data-dropdown-menu>
-        <li class="menu-text" ui-sref="#">My AngularJS</li>
-      </ul>
-    </div>
-    <div class="top-bar-right">
-      <!-- basic menu -->
-      <ul class="menu">
-        <ul class="menu">
-
-          <li> <a ui-sref=".day2">Day 2</a> </li>
-          <li><a ui-sref=".day3">Day 3</a></li>
-          <li><a ui-sref=".day4">Day 4</a></li>
-            <li>
-              <input type="search" placeholder="Search">
-            </li>
-            <li>
-              <button type="button" class="button">Search</button>
-            </li>
+        <ul class="menu" data-dropdown-menu>
+            <li class="menu-text" ui-sref="#">My AngularJS</li>
         </ul>
     </div>
-  </div>
+    <div class="top-bar-right">
+        <!-- basic menu -->
+        <ul class="menu">
+            <ul class="menu">
 
-  <!-- the view will be placed here -->
-  <div class="row">
-    <div class="large-12">
-<div ui-view> </div>
+                <li><a ui-sref=".day2">Day 2</a></li>
+                <li><a ui-sref=".day3">Day 3</a></li>
+                <li><a ui-sref=".day4">Day 4</a></li>
+                <li>
+                    <input type="search" placeholder="Search">
+                </li>
+                <li>
+                    <button type="button" class="button">Search</button>
+                </li>
+            </ul>
+    </div>
 </div>
+
+<!-- the view will be placed here -->
+<div class="row">
+    <div class="large-12">
+        <div ui-view></div>
+    </div>
 </div>
 </body>
 

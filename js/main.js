@@ -3,7 +3,7 @@
  * @Date:   2016-08-22T08:27:13+03:00
  * @Email:  pkiragu@cytonn.com
 * @Last modified by:   PKiragu
-* @Last modified time: 2016-08-25T12:49:05+03:00
+* @Last modified time: 2016-08-25T14:13:05+03:00
  */
 
 // modules
@@ -59,19 +59,15 @@ myModule.controller('myCtrl', function($scope) {
   ];
 });
 
-// myModule.controller('myWatch', function($scope) {
-//
-//     $scope.myVar = 1;
-//
-//     "vm.myVar",
-//     function handleVarChange( newValue, oldValue ) {
-//         console.log( "vm.myVar:", newValue );
-//     })
-//
-//     $scope.buttonClicked = function() {
-//         $scope.myVar = 2; // This will trigger $watch expression to kick in
-//     };
-// });
+myModule.controller('watchCtrl', function($scope) {
+  $scope.name = "Phillis";
+  $scope.changed = -1;
+
+  $scope.$watch('name', function(newValue, oldValue){
+    if (newValue === oldValue) { return; }
+    $scope.changed++;
+});
+});
 
 
 myModule.config(function($stateProvider, $urlRouterProvider) {
@@ -93,7 +89,7 @@ myModule.config(function($stateProvider, $urlRouterProvider) {
     .state('example', {
       url: '/theview',
       template: '<h3>I am a routed view</h3>',
-      controller: "appCtrl"
+      controller: "promiseCtrl"
     })
 
   .state('day2', {
@@ -125,13 +121,13 @@ myModule.config(function($stateProvider, $urlRouterProvider) {
 
   .state('day4', {
     url: '/day4',
-    template: '</h1>day4.html</h1>'
+    templateUrl: 'day4.html'
 
   });
 });
 //Promises
 //
-myModule.controller('appCtrl', function($scope, $q){
+myModule.controller('promiseCtrl', function($scope, $q){
   var defer = $q.defer();
 
   defer.promise

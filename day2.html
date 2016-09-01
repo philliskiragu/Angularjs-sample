@@ -34,13 +34,17 @@
         <div ng-message="minlength">Your password is too short</div>
       </div>
 
-</div>
+
       <input name="send" type="button" value="Login">
     </form>
 
     <p>The input's valid state is:</p>
     <h1>{{myForm.username.$valid}}</h1>
   </div>
-
+<div>
+  <h4>Watch if name changes</h4>
+  <input ng-model="name" />
+  Name Changed: {{updated}} times.
+</div>
 </div>
 </div>

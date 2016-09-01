@@ -3,17 +3,53 @@
 @Date:   2016-08-24T20:40:27+03:00
 @Email:  pkiragu@cytonn.com
 @Last modified by:   PKiragu
-@Last modified time: 2016-08-25T06:24:18+03:00
+@Last modified time: 2016-08-25T14:16:45+03:00
 -->
 
 
+<!doctype html>
+<html>
 
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="css/foundation.css">
+    <link rel="stylesheet" type="text/css" href="css/main.css">
+
+    <!-- <script src="js/angular.min.js"></script> -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.8/angular.min.js"></script>
+    <script type="text/javascript" src="jwt_auth/jwt.js"></script>
+
+    <title>AngularJS Code Sample</title>
+</head>
+<body ng-app="jwt">
 <div class="row">
-  <div class="large-12">
-    <hr>
-    <p>Angular Basics {{'Day' + ' 4'}}</p>
-    <hr>
-    <h4>Promises</h4>
+    <div class="large-8">
+        <hr>
+        <p>Angular Basics {{'Day' + ' 4'}}</p>
+        <hr>
+        <h4>JWT</h4>
 
-  </div>
+        <h3>Sign Up</h3>
+
+        <input type="text" ng-model="main.username" placeholder="username"><br>
+        <input type="password" ng-model="main.password" placeholder="password"><br>
+        <br>
+
+        <button class="save button" ng-click="main.register()">Register</button>
+        <button class="save button" ng-click="main.login()">Login</button>
+        <button class="save button" ng-click="main.logout()" ng-show="main.isAuthed()">Logout</button>
+
+        <button class="save button" ng-click="main.getQuote()">get quote</button>
+        <button class="save button" ng-click="auth.test()">log test</button>
+        <br><br>
+        {{main.message}}
+        <div>
+            <h4> Promises </h4>
+
+            <div>
+                <a ui-sref=".example" class="save button">Promise</a>
+            </div>
+            <div ui-view></div>
+        </div>
+    </div>
 </div>
